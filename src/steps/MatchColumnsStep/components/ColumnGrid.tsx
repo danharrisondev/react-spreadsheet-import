@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Column, Columns } from "../MatchColumnsStep"
-import { Box, Flex, Heading, ModalBody, Text, useStyleConfig } from "@chakra-ui/react"
+import { Box, Flex, Heading, ModalBody, Text, Table, Tr, Td, useStyleConfig } from "@chakra-ui/react"
 import { FadingWrapper } from "../../../components/FadingWrapper"
 import { ContinueButton } from "../../../components/ContinueButton"
 import { useRsi } from "../../../hooks/useRsi"
@@ -47,13 +47,15 @@ export const ColumnGrid = <T extends string>({
             <Text sx={styles.title}>{translations.matchColumnsStep.templateTitle}</Text>
           </Box>
           <FadingWrapper gridColumn={`1/${columns.length + 3}`} gridRow="4/5" />
-          {columns.map((column, index) => (
-            <Box gridRow="4/5" gridColumn={`${index + 2}/${index + 3}`} key={column.index} py="1.125rem" pl={2} pr={3}>
-              {templateColumn(column)}
-            </Box>
-          ))}
         </Flex>
-        <Text>Hello, World!</Text>
+        <Table>
+          {columns.map((column, index) => (
+            <Tr key={index}>
+              <Td>{column.header}</Td>
+              <Td>{templateColumn(column)}</Td>
+            </Tr>
+          ))}
+        </Table>
       </ModalBody>
       <ContinueButton onContinue={onContinue} title={translations.matchColumnsStep.nextButtonTitle} />
     </>
