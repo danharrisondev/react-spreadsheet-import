@@ -53,6 +53,7 @@ export const ColumnGrid = <T extends string>({
             </Box>
           ))}
         </Flex>
+        <Text>Hello, World!</Text>
       </ModalBody>
       <ContinueButton onContinue={onContinue} title={translations.matchColumnsStep.nextButtonTitle} />
     </>
