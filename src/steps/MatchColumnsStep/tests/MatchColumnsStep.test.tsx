@@ -273,38 +273,9 @@ describe("Match Columns general tests", () => {
       </Providers>,
     )
 
-    //expect(screen.getByText(header[0])).toBeInTheDocument()
-    //expect(screen.getByText(header[1])).toBeInTheDocument()
-    //expect(screen.getByText(header[2])).toBeInTheDocument()
-  })
-
-  test("Displays two rows of example data", async () => {
-    const header = ["namezz", "Phone", "Email"]
-    const data = [
-      ["John", "123", "j@j.com"],
-      ["Dane", "333", "dane@bane.com"],
-      ["Kane", "534", "kane@linch.com"],
-    ]
-
-    const onContinue = jest.fn()
-    render(
-      <Providers theme={defaultTheme} rsiValues={{ ...mockRsiValues, fields }}>
-        <ModalWrapper isOpen={true} onClose={() => {}}>
-          <MatchColumnsStep headerValues={header} data={data} onContinue={onContinue} />
-        </ModalWrapper>
-      </Providers>,
-    )
-
-    // only displays two rows
-    expect(screen.queryByText(data[0][0])).toBeInTheDocument()
-    expect(screen.queryByText(data[0][1])).toBeInTheDocument()
-    expect(screen.queryByText(data[0][2])).toBeInTheDocument()
-    expect(screen.queryByText(data[1][0])).toBeInTheDocument()
-    expect(screen.queryByText(data[1][1])).toBeInTheDocument()
-    expect(screen.queryByText(data[1][2])).toBeInTheDocument()
-    expect(screen.queryByText(data[2][0])).not.toBeInTheDocument()
-    expect(screen.queryByText(data[2][1])).not.toBeInTheDocument()
-    expect(screen.queryByText(data[2][2])).not.toBeInTheDocument()
+    expect(screen.getByText(header[0])).toBeInTheDocument()
+    expect(screen.getByText(header[1])).toBeInTheDocument()
+    expect(screen.getByText(header[2])).toBeInTheDocument()
   })
 
   test("Displays all fields in selects dropdown", async () => {
@@ -470,32 +441,6 @@ describe("Match Columns general tests", () => {
       expect(onContinue).toBeCalled()
       expect(onContinue.mock.calls[0][0]).toEqual(result)
     })
-  })
-
-  test("Can ignore columns", async () => {
-    const header = ["Something random", "Phone", "Email"]
-    const data = [
-      ["John", "123", "j@j.com"],
-      ["Dane", "333", "dane@bane.com"],
-      ["Kane", "534", "kane@linch.com"],
-    ]
-
-    const onContinue = jest.fn()
-    render(
-      <Providers theme={defaultTheme} rsiValues={{ ...mockRsiValues, fields }}>
-        <ModalWrapper isOpen={true} onClose={() => {}}>
-          <MatchColumnsStep headerValues={header} data={data} onContinue={onContinue} />
-        </ModalWrapper>
-      </Providers>,
-    )
-
-    const ignoreButton = screen.getAllByLabelText("Ignore column")[0]
-
-    expect(screen.queryByText(translations.matchColumnsStep.ignoredColumnText)).not.toBeInTheDocument()
-
-    userEvent.click(ignoreButton)
-
-    expect(screen.queryByText(translations.matchColumnsStep.ignoredColumnText)).toBeInTheDocument()
   })
 
   test("Required unselected fields show warning alert on submit", async () => {
