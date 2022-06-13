@@ -363,9 +363,10 @@ export const themeOverrides = {
           },
           dialog: {
             outline: "unset",
-            minH: "calc(100vh - 4rem)",
-            maxW: "calc(100vw - 4rem)",
-            my: "2rem",
+            minH: "calc(90vh - 4rem)",
+            maxW: "calc(90vw - 4rem)",
+            my: "8rem",
+            ml: "8rem",
             borderRadius: "3xl",
             overflow: "hidden",
           },
