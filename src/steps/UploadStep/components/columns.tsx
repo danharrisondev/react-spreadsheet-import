@@ -11,7 +11,7 @@ export const generateColumns = <T extends string>(fields: Fields<T>) =>
       minWidth: 150,
       headerRenderer: () => (
         <Box display="flex" gap={1} alignItems="center" position="relative">
-          <Box flex={1} overflow="hidden" textOverflow="ellipsis">
+          <Box flex={1} overflow="hidden" textOverflow="ellipsis" title={column.label}>
             {column.label}
           </Box>
           {column.description && (
