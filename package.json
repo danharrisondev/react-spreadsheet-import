@@ -1,6 +1,6 @@
 {
   "name": "brighthr-react-spreadsheet-import",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "React spreadsheet import for xlsx and csv files with column matching and validation",
   "main": "./dist-commonjs/index.js",
   "module": "./dist/index.js",
